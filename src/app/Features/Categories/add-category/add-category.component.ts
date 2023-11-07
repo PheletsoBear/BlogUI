@@ -24,9 +24,12 @@ export class AddCategoryComponent {
 
       next: (response)=>{
          console.log('Success')
-      }
+      },
+      error: (error) => {
+        console.log('error')
+      },
     })
-    console.log(this.model)
+
   }
 
 }
