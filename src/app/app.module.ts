@@ -7,18 +7,20 @@ import { NavbarComponent } from './Core/Components/navbar/navbar.component';
 import { CategoryListComponent } from './Features/Categories/category-list/category-list.component';
 import { AddCategoryComponent } from './Features/Categories/add-category/add-category.component';
 import { FormsModule } from '@angular/forms';
-
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CategoryListComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
