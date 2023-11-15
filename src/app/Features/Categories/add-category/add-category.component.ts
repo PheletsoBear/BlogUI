@@ -13,9 +13,11 @@ export class AddCategoryComponent implements OnDestroy {
   model : AddCategoryRequest;
   private addCategorySubscription?: Subscription
   constructor(private CategoryService: CategoryService){
+    
+    //form variables
     this.model = {
-        name : "",
-        urlHandle : ""
+        name : "", //name variable
+        urlHandle : "" //url handle variable
     }
   }
   
