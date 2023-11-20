@@ -11,7 +11,9 @@ import { Subscription } from 'rxjs';
 export class AddCategoryComponent implements OnDestroy {
 
   model : AddCategoryRequest;
+  
   private addCategorySubscription?: Subscription
+
   constructor(private CategoryService: CategoryService){
     
     //form variables
