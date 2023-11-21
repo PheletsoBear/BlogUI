@@ -8,12 +8,14 @@ import { CategoryListComponent } from './Features/Categories/category-list/categ
 import { AddCategoryComponent } from './Features/Categories/add-category/add-category.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CategoryListComponent,
     AddCategoryComponent,
+   
    
   ],
   imports: [

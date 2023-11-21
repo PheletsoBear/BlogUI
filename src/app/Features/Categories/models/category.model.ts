@@ -5,6 +5,4 @@ export interface Category{
     urlHandle: string;
 
 
-
-
 }
