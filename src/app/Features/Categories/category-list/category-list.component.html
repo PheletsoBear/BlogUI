@@ -23,7 +23,9 @@
             <td>{{category.id}}</td>
             <td>{{category.name}}</td>
             <td>{{category.urlHandle}}</td>
-            
+            <td>
+                 <a class="btn btn-light" [routerLink]="['/admin/categories', category.id]">Edit</a>
+            </td>
             </tr>
         </tbody>
        </table>
