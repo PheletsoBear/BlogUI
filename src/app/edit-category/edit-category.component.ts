@@ -23,7 +23,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
       
     }
       ngOnDestroy(): void {
-         this.paramsSubscription?.unsubscribe();
+         this.paramsSubscription?.unsubscribe(); //this unsubscribes from the observable
       }
   
 

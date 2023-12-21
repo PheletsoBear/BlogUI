@@ -41,6 +41,6 @@ export class AddCategoryComponent implements OnDestroy {
   }
   
   ngOnDestroy(): void {
-     this.addCategorySubscription?.unsubscribe();
+     this.addCategorySubscription?.unsubscribe(); //this unsubcribes from the observable
   }
 }
