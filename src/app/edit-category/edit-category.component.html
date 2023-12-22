@@ -1,1 +1,41 @@
-<p>{{id}}</p>
+
+
+<div class="container">
+    <h1 class="mt-3">Edit Category</h1>
+
+    <!--the if part of the *ngIf directive-->
+    <ng-container *ngIf="category;else notFound">
+       
+        <form #form = "ngForm" (ngSubmit)="onFormSubmit">
+
+          <div class="mt-2">
+            <div class="mt-3">
+                <label class="form-label" for="categoryId">Category Id</label>
+                <input type="text" disabled  id="categoryId" class="form-control" name ="categoryId" 
+                value="{{category.id}}">
+          </div>
+
+          <div class="mt-3">
+            <label class="form-label" for="categoryName">Category Name</label>
+            <input type="text"   id="categoryName" class="form-control" name ="categoryName" 
+            value="{{category.name}}">
+      </div>
+
+
+      <div class="mt-3">
+        <label class="form-label" for="categoryUrlHandle">Category Url Handle</label>
+        <input type="text"   id="categoryUrlHandle" class="form-control" name ="categoryUrlHandle" 
+        value="{{category.urlHandle}}">
+   </div>
+   </div>
+       </form>
+
+    </ng-container>
+    
+    <!--The else block of the *ngIf directive-->
+    <ng-template #notFound>
+        <div class="alert alert-warning" role="alert">
+             Category not Found!
+          </div>
+    </ng-template> 
+</div>

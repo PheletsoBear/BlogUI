@@ -24,4 +24,7 @@ getAllCategories(): Observable<Category[]>{
    return this.http.get<Category[]>('https://localhost:7223/api/Categories');
 }
 
+  getCategoryById(id: string): Observable<Category>{
+     return this.http.get<Category>(`https://localhost:7223/api/Categories/${id}`)
+  }
 }
