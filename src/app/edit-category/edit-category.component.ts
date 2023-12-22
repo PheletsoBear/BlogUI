@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class EditCategoryComponent implements OnInit, OnDestroy{
   paramsSubscription?: Subscription;
-  id: string | null= null;
+  id: string | null = null;
 
    constructor (private route: ActivatedRoute){
 
@@ -18,6 +18,9 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
      this.paramsSubscription = this.route.paramMap.subscribe({
        next: (params) => {
          this.id = params.get('id');
+        },
+        error : (error) =>{
+          console.log("failed");
         }
       });
       

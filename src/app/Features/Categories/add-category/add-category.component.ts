@@ -31,12 +31,14 @@ export class AddCategoryComponent implements OnDestroy {
       
       
       next: (response)=>{
+
         
          this.router.navigateByUrl('/admin/categories')
+         console.log(response);
           
       },
       error: (error) => {
-        console.log('error')
+        console.log('error');
       },
     })
     
