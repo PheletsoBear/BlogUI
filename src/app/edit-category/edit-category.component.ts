@@ -26,20 +26,23 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
          this.CategoryService.getCategoryById(this.id).subscribe({
           next: (response) =>{
                this.category = response;
-               
+              
+
           }
          });
          }
         },
-        // Creared this optionally just to understand the next and error properties
+       
        
       });
       
     }
 
-    onFormSubmit(){
-      
+    onFormSubmit(): void{
+          console.log(this.category); 
+
     }
+    
       ngOnDestroy(): void {
          this.paramsSubscription?.unsubscribe(); //this unsubscribes from the observable
       }
