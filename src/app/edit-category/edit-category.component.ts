@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CategoryService } from '../Features/Categories/Services/category.service';
 import { Category } from '../Features/Categories/models/category.model';
+import { UpdateCategoryRequest } from '../Features/Categories/models/update-category-request.model';
+
+
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
@@ -12,8 +15,9 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
   paramsSubscription?: Subscription;
   id: string | null = null;
   category?: Category;
+  editCategorySubcriprion?: Subscription;
 
-   constructor (private route: ActivatedRoute, private CategoryService :  CategoryService ){
+   constructor (private route: ActivatedRoute, private CategoryService :  CategoryService, private router: Router ){
 
    }
    ngOnInit(): void {
@@ -39,12 +43,30 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
     }
 
     onFormSubmit(): void{
-          console.log(this.category); 
+         const updateCategoryRequest: UpdateCategoryRequest = {
+         
+          name : this.category?.name ?? '',
+          urlHandle : this.category?.urlHandle ?? ''
+
+        
+        };
+   if (this.id){
+
+     this.editCategorySubcriprion =  this.CategoryService.updateCategory(this.id, updateCategoryRequest).subscribe({
+      next : (Response) =>{
+       
+        this.router.navigateByUrl('/admin/categories')
+
+      }
+    
+    })
+   }
 
     }
     
       ngOnDestroy(): void {
          this.paramsSubscription?.unsubscribe(); //this unsubscribes from the observable
+         this.editCategorySubcriprion?.unsubscribe(); //this unsubscribes from the observable
       }
   
 

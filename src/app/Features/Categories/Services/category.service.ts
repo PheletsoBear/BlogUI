@@ -3,6 +3,7 @@ import { AddCategoryRequest } from '../models/add-category.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../models/category.model';
+import { UpdateCategoryRequest } from '../models/update-category-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ getAllCategories(): Observable<Category[]>{
 
   getCategoryById(id: string): Observable<Category>{
      return this.http.get<Category>(`https://localhost:7223/api/Categories/${id}`)
+  }
+
+  updateCategory(id : string, updateCategoryRequest : UpdateCategoryRequest) : Observable<Category> {
+   return this.http.put<Category>(`https://localhost:7223/api/Categories/${id}`, updateCategoryRequest);
   }
 }
