@@ -3,31 +3,50 @@
       <a class="navbar-brand" href="#">Blog UI</a>
 
       <!--This is the responsive toggle bar for the mobile view -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"  data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <!--This is the collapse OffCanvas connected to the responsive toggle button/Hamburger -->
+      <!--Made use of the property binding  where the id of the div links to data-bs-target of the button of navbar-toggler-->
 
-      <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-         
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Admin
-            </a>
-            <ul class="dropdown-menu">
+      <!--
+        note:
+        in order to be able to dismiss the offCanvas we make use of the 
+
+        data-bs-dismiss="offcanvas"
+
+      -->
+  
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <a class="navbar-brand" href="#"><h5 class="offcanvas-title" id="offcanvasExampleLabel">Blog UI</h5></a>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+           <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
              
-              <li><a class="dropdown-item" routerLink="admin/categories" >Category</a></li>
-             
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Admin
+                </a>
+                <ul class="dropdown-menu">
+                 
+                  <li><a class="dropdown-item " routerLink="#offcanvasExample" routerLink="admin/categories"  data-bs-dismiss="offcanvas">Category</a></li>
+                
+                 
+                </ul>
+              </li>
+            
             </ul>
-          </li>
-        
-        </ul>
-       
+          </div>
+        </div>
       </div>
-    </div>
+
+      
+
+
   </nav>
