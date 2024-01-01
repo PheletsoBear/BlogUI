@@ -35,4 +35,10 @@ getAllCategories(): Observable<Category[]>{
   updateCategory(id : string, updateCategoryRequest : UpdateCategoryRequest) : Observable<Category> {
    return this.http.put<Category>(`https://localhost:7223/api/Categories/${id}`, updateCategoryRequest);
   }
+
+  DeleteCategory(id: string):Observable<Category>{
+
+    return this.http.delete<Category>(`https://localhost:7223/api/Categories/${id}`)
+
+  }
 }
