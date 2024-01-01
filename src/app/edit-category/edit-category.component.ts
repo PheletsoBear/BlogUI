@@ -53,7 +53,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
    if (this.id){
 
      this.editCategorySubcriprion =  this.CategoryService.updateCategory(this.id, updateCategoryRequest).subscribe({
-      next : (Response) =>{
+      next : (response) =>{
        
         this.router.navigateByUrl('/admin/categories')
 
@@ -66,6 +66,14 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
 
     onDelete(): void{
             
+      if(this.id){
+        this.CategoryService.deleteCategory(this.id).subscribe({
+          next: (response) =>{
+            this.router.navigateByUrl('/admin/categories')
+          }
+        })
+      }
+
     }
     
       ngOnDestroy(): void {
