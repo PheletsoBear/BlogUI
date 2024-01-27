@@ -31,7 +31,7 @@ getAllCategories(): Observable<Category[]>{
   }
 
   
-//upfdating  category by id using put method
+//updating  category by id using put method
   updateCategory(id : string, updateCategoryRequest : UpdateCategoryRequest) : Observable<Category> {
    return this.http.put<Category>(`https://localhost:7223/api/Categories/${id}`, updateCategoryRequest);
   }
