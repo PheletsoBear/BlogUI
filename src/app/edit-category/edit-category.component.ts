@@ -42,7 +42,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
       
     }
 
-    onFormSubmit(): void{
+    onFormSubmit( form : any): void{
          const updateCategoryRequest: UpdateCategoryRequest = {
          
           name : this.category?.name ?? '', //comment
@@ -55,7 +55,8 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
      this.editCategorySubcriprion =  this.CategoryService.updateCategory(this.id, updateCategoryRequest).subscribe({
       next : (response) =>{
        
-        this.router.navigateByUrl('/admin/categories')
+        this.router.navigateByUrl('/admin/categories');
+        console.log(form);
 
       }
     

@@ -24,7 +24,7 @@ export class AddCategoryComponent implements OnDestroy {
     }
   }
   
-  onFormSubmit(){
+  onFormSubmit(form: any){
 
     // subscribing to the observable
     this.addCategorySubscription = this.CategoryService.addCategory(this.model).subscribe({

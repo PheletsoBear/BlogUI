@@ -7,7 +7,7 @@
     <ng-container *ngIf="category;else notFound">
        <!--This is the beginning of the Form considering that the *ngIf directive is true-->
 
-        <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+        <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
 
           <div class="mt-2">
             <div class="mt-3">
@@ -17,22 +17,24 @@
           </div>
 
           <div class="mt-3">
-            <label class="form-label" for="categoryName">Category Name</label>
-            <input type="text"   id="categoryName" class="form-control" name ="categoryName" 
-            [(ngModel)]="category.name">
+            <label   class="form-label" for="categoryName">Category Name</label>
+            <input ngModel #categoryName = "ngModel" type="text"   id="categoryName" class="form-control" name ="categoryName" 
+            [(ngModel)]="category.name" required>
       </div>
-
+      <div class="alert alert-danger" *ngIf= "categoryName.invalid && categoryName.touched" > Category name cannot be empty </div>
 
       <div class="mt-3">
         <label class="form-label" for="categoryUrlHandle">Category Url Handle</label>
-        <input type="text"   id="categoryUrlHandle" class="form-control" name ="categoryUrlHandle" 
-        [(ngModel)]="category.urlHandle">
+        <input ngModel #categoryUrlHandle = "ngModel" type="text"   id="categoryUrlHandle" class="form-control" name ="categoryUrlHandle" 
+        [(ngModel)]="category.urlHandle" required>
    </div>
+   <div class="alert alert-danger" *ngIf= "categoryUrlHandle.invalid && categoryUrlHandle.touched" >categoryUrlHandle cannot be empty</div>
    </div>
 
    <div class="mt-3  d-flex">
-       <button type="submit" class="btn btn-primary" > Save </button>
+       <button type="submit" class="btn btn-primary" [disabled]="form.invalid"> Save </button>
        <button type="button" class="btn btn-danger ms-3" (click)="onDelete()">Delete</button>
+       
    </div>
    
 
