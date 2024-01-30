@@ -8,6 +8,8 @@ import { CategoryListComponent } from './Features/Categories/category-list/categ
 import { AddCategoryComponent } from './Features/Categories/add-category/add-category.component';
 import {HttpClientModule} from '@angular/common/http';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { BlogpostListComponent } from './Features/BlogPost/blogpostlist/blogpostlist.component';
+import { BlogPostComponent } from './Features/BlogPost/blog-post/blog-post.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     CategoryListComponent,
     AddCategoryComponent,
     EditCategoryComponent,
+    BlogpostListComponent,
+    BlogPostComponent,
    
    
   ],

@@ -15,4 +15,9 @@ export class BlogPostService {
   {
       return this.http.post<BlogPost>(`https://localhost:7223/api/BlogPosts`,model)
   }
+
+    getAllBlogPosts(): Observable<BlogPost[]>{
+
+      return this.http.get<BlogPost[]>(`https://localhost:7223/api/BlogPosts`);
+    }
 }

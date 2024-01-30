@@ -13,10 +13,10 @@ export class CategoryService {
   constructor(private http: HttpClient) {}
 
 //This is the Method that Creates a new category via post method
-addCategory(model: AddCategoryRequest): Observable<void> {
+addCategory(model: AddCategoryRequest): Observable<Category> {
 
 
-    return this.http.post<void>(`https://localhost:7223/api/categories`,model); //post method
+    return this.http.post<Category>(`https://localhost:7223/api/categories`,model); //post method
 
 }
 

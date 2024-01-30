@@ -35,7 +35,8 @@
                 </a>
                 <ul class="dropdown-menu">
                  
-                  <li><a class="dropdown-item " routerLink="#offcanvasExample" routerLink="admin/categories"  data-bs-dismiss="offcanvas">Category</a></li>
+                  <li><a class="dropdown-item " routerLink="#offcanvasExample" [routerLink]="['/admin/categories']"  data-bs-dismiss="offcanvas">Categories</a></li>
+                  <li><a class="dropdown-item " routerLink="#offcanvasExample" [routerLink]="['admin/blogpostlist']"  data-bs-dismiss="offcanvas">blogPosts</a></li>
                 
                  
                 </ul>

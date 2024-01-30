@@ -1,7 +1,7 @@
 export interface BlogPost{
    id: string;
     title: string;
-    shortDescription: string;
+    shortDesc: string;
     content: string;
     featuredImgUrl: string;
    urlHandle: string;
