@@ -10,7 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { BlogpostListComponent } from './Features/BlogPost/blogpostlist/blogpostlist.component';
 import { BlogPostComponent } from './Features/BlogPost/blog-post/blog-post.component';
-
+import { MarkdownModule } from 'ngx-markdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,15 +19,16 @@ import { BlogPostComponent } from './Features/BlogPost/blog-post/blog-post.compo
     AddCategoryComponent,
     EditCategoryComponent,
     BlogpostListComponent,
-    BlogPostComponent,
-   
+    BlogPostComponent
+    
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
