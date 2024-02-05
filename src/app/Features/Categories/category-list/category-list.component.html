@@ -6,30 +6,33 @@
         </a>
     </div>
 
-    <ng-container *ngIf=" categories$ | async as Category">
-       <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
+    <div class="container-fluid">
+        <ng-container *ngIf=" categories$ | async as Category">
+           <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+    
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Ul Handle</th>
+    
+                </tr>
+               
+            </thead>
+            <tbody>
+                <tr *ngFor="let category of Category">
+                <td>{{category.id}}</td>
+                <td>{{category.name}}</td>
+                <td>{{category.urlHandle}}</td>
+                <td>
+                     <a class="btn btn-secondary" [routerLink]="['/admin/categories', category.id]">Edit</a>
+                </td>
+                </tr>
+            </tbody>
+           </table>
+        </ng-container>
+    </div>
 
-                <th>Id</th>
-                <th>Name</th>
-                <th>Ul Handle</th>
-
-            </tr>
-           
-        </thead>
-        <tbody>
-            <tr *ngFor="let category of Category">
-            <td>{{category.id}}</td>
-            <td>{{category.name}}</td>
-            <td>{{category.urlHandle}}</td>
-            <td>
-                 <a class="btn btn-secondary" [routerLink]="['/admin/categories', category.id]">Edit</a>
-            </td>
-            </tr>
-        </tbody>
-       </table>
-    </ng-container>
 
 
     
