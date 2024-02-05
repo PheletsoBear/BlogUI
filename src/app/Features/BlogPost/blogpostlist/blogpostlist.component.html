@@ -5,29 +5,36 @@
     </div>
 </div>
 
-<ng-container *ngIf="blogPosts$ |async as BlogPost ">
-
-  <table class="table table-bordered">
-        <thead>
-            <tr>
-
-                <th>Title</th>
-                <th>Short Description</th>
-                <th>Is<br>Visible </th>
-
-            </tr>
-           
-        </thead>
-        <tbody>
-            <tr *ngFor="let blogpost of BlogPost">
-            <td>{{blogpost.title}}</td>
-            <td>{{blogpost.shortDesc}}</td>
-            <td>{{blogpost.isVisible}}</td>
-           
-            </tr>
-        </tbody>
-       </table>
+<div class="container-fluid">
 
 
-
-</ng-container>
+    <ng-container *ngIf="blogPosts$ |async as BlogPost ">
+    
+      <table class="table table-bordered">
+            <thead>
+                <tr>
+    
+                    <th>Title</th>
+                    <th>Short Description</th>
+                    <th>Is<br>Visible? </th>
+                    
+    
+                </tr>
+               
+            </thead>
+            <tbody>
+                <tr *ngFor="let blogpost of BlogPost">
+                <td>{{blogpost.title}}</td>
+                <td>{{blogpost.shortDesc}}</td>
+                <td>{{blogpost.isVisible}}</td>
+                
+              
+               
+                </tr>
+            </tbody>
+           </table>
+    
+    
+    
+    </ng-container>
+</div>
