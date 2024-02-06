@@ -17,7 +17,7 @@ export class BlogpostListComponent implements OnInit {
     
   }
   ngOnInit(): void {
-        this.blogPosts$ = this.BlogPostService.getAllBlogPosts();
+        this.blogPosts$ = this.BlogPostService.getAllBlogPosts(); //On refresh Data is received
      
   }
 

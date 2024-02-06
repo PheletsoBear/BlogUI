@@ -1,3 +1,5 @@
+
+
 export interface AddBlogPost{
 
     Title: string;
@@ -7,7 +9,9 @@ export interface AddBlogPost{
     UrlHandle: string;
     PublishDate: Date;
     Author: string;
-    IsVisible: boolean
+    IsVisible: boolean;
+    
+
 
 
 

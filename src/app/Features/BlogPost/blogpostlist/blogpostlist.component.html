@@ -17,6 +17,7 @@
                     <th>Title</th>
                     <th>Short Description</th>
                     <th>Is<br>Visible? </th>
+                    <th>Category</th>
                    
     
                 </tr>
@@ -27,9 +28,13 @@
                 <td>{{blogpost.title}}</td>
                 <td>{{blogpost.shortDesc}}</td>
                 <td>{{blogpost.isVisible}}</td>
-                
-              
-               
+
+                <td  >
+                    <!--Below we use  blogpost.categories Because inside the model, categories is an array and we need to traverse through it -->
+                    <span class="badge bg-secondary ms-1" *ngFor="let category of blogpost.categories">
+                    {{category.name}}
+                    </span>
+                </td>
                 </tr>
             </tbody>
            </table>
