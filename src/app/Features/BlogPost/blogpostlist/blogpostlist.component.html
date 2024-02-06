@@ -35,6 +35,10 @@
                     {{category.name}}
                     </span>
                 </td>
+                <td>
+                    <a class="btn btn-secondary" [routerLink]="['/admin/blog', blogpost.id]">Edit</a>
+               </td>
+                
                 </tr>
             </tbody>
            </table>
