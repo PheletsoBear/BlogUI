@@ -11,6 +11,8 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { BlogpostListComponent } from './Features/BlogPost/blogpostlist/blogpostlist.component';
 import { BlogPostComponent } from './Features/BlogPost/blog-post/blog-post.component';
 import { MarkdownModule } from 'ngx-markdown';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,9 @@ import { MarkdownModule } from 'ngx-markdown';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

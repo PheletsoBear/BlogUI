@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { CategoryService } from '../Features/Categories/Services/category.service';
 import { Category } from '../Features/Categories/models/category.model';
 import { UpdateCategoryRequest } from '../Features/Categories/models/update-category-request.model';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-category',
@@ -17,7 +17,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
   category?: Category;
   editCategorySubcriprion?: Subscription;
 
-   constructor (private route: ActivatedRoute, private CategoryService :  CategoryService, private router: Router ){
+   constructor (private route: ActivatedRoute, private CategoryService :  CategoryService, private router: Router,private toastr: ToastrService ){
 
    }
    ngOnInit(): void {
@@ -70,7 +70,10 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
       if(this.id){
         this.CategoryService.deleteCategory(this.id).subscribe({
           next: (response) =>{
+            
             this.router.navigateByUrl('/admin/categories')
+
+             
           }
         })
       }
@@ -83,5 +86,8 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
       }
   
 
+        Test(){
+          this.toastr.success('Item deleted successfully!', 'Success');
+        }
 
 }
