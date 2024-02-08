@@ -20,4 +20,8 @@ export class BlogPostService {
 
       return this.http.get<BlogPost[]>(`https://localhost:7223/api/BlogPosts`);
     }
+
+    getBlogPostById(id: string): Observable<BlogPost>{
+      return this.http.get<BlogPost>(`https://localhost:7223/api/Categories/${id}`)
+    }
 }

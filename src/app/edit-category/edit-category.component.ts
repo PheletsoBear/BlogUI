@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EditCategoryComponent implements OnInit, OnDestroy{
   paramsSubscription?: Subscription;
-  id: string | null = null;
+  id: string | null = null; //Adding the id property to hold the route id
   category?: Category;
   editCategorySubcriprion?: Subscription;
 
@@ -86,8 +86,5 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
       }
   
 
-        Test(){
-          this.toastr.success('Item deleted successfully!', 'Success');
-        }
-
+        
 }
