@@ -3,10 +3,15 @@
 
     <form #form="ngForm" (ngSubmit)="onFormSubmit()">
         <div class="mt-3 mb-5">
+
             <div class="mt-3">
                 <label for="title" class="form-label"> <label class="required">*</label>Title</label>
-                <input type="text" id="title" name="title" class="form-control" [(ngModel)]="model.Title" >
+                <input ngModel type="text" id="title"  #title = "ngModel" name="title" class="form-control" [(ngModel)]="model.Title" required >
             </div>
+           
+            <div class="alert alert-danger" *ngIf= "title.invalid && title.touched">title cannot be empty</div>
+            
+            
             <div class="mt-3">
                 <label for="UrlHandle" class="form-label"> <label class="required">*</label>Url Handle</label>
                 <input type="text" id="UrlHandle" name="UrlHandle" class="form-control" [(ngModel)]="model.UrlHandle">
