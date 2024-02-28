@@ -7,7 +7,7 @@ import { NavbarComponent } from './Core/Components/navbar/navbar.component';
 import { CategoryListComponent } from './Features/Categories/category-list/category-list.component';
 import { AddCategoryComponent } from './Features/Categories/add-category/add-category.component';
 import {HttpClientModule} from '@angular/common/http';
-import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { EditCategoryComponent } from './Features/Categories/edit-category/edit-category.component';
 import { BlogpostListComponent } from './Features/BlogPost/blogpostlist/blogpostlist.component';
 import { BlogPostComponent } from './Features/BlogPost/blog-post/blog-post.component';
 import { MarkdownModule } from 'ngx-markdown';

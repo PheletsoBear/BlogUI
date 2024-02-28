@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryListComponent } from './Features/Categories/category-list/category-list.component';
 import { AddCategoryComponent } from './Features/Categories/add-category/add-category.component';
-import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { EditCategoryComponent } from './Features/Categories/edit-category/edit-category.component';
 import {  BlogpostListComponent } from './Features/BlogPost/blogpostlist/blogpostlist.component';
 import { BlogPostComponent } from './Features/BlogPost/blog-post/blog-post.component';
 import { EditBlogPostComponent } from './Features/BlogPost/edit-blog-post/edit-blog-post.component';
