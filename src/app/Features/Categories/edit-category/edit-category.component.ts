@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./edit-category.component.css']
 })
 export class EditCategoryComponent implements OnInit, OnDestroy{
-  paramsSubscription?: Subscription;
+  paramsSubscription?: Subscription; // This property holds the subscription of the parameter 
   id: string | null = null; //Adding the id property to hold the route id
   category?: Category;
   editCategorySubcriprion?: Subscription;

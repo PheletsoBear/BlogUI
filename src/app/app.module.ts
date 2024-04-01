@@ -13,6 +13,7 @@ import { BlogPostComponent } from './Features/BlogPost/blog-post/blog-post.compo
 import { MarkdownModule } from 'ngx-markdown';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     MarkdownModule.forRoot(),
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
