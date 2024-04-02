@@ -1,109 +1,155 @@
 <div class="container">
-    
-    <h1 class="mt-3">Edit BlogPost </h1>
+  <h1 class="mt-3">Edit BlogPost</h1>
 
-    <ng-container *ngIf="model"; else #elseBlock  > 
+  <ng-container *ngIf="model">
+    <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+      <div class="mt-3 mb-5">
+        <div class="mt-3">
+          <label for="title" class="form-label">
+            <label class="required">*</label>Title</label
+          >
+          <input
+            ngModel
+            type="text"
+            id="title"
+            #title="ngModel"
+            name="title"
+            class="form-control"
+            [(ngModel)]="model.title"
+            required
+          />
+        </div>
 
-        
-            <form #form="ngForm" (ngSubmit)="onFormSubmit()">
-                <div class="mt-3 mb-5">
-        
-                    <div class="mt-3">
-                        <label for="title" class="form-label"> <label class="required">*</label>Title</label>
-                        <input ngModel type="text" id="title"  #title = "ngModel" name="title" class="form-control" [(ngModel)]="model.title" required >
-                    </div>
-                   
-                    <div class="alert alert-danger" *ngIf= "title.invalid && title.touched">title cannot be empty</div>
-                    
-                    
-                    <div class="mt-3">
-                        <label for="UrlHandle" class="form-label"> <label class="required">*</label>Url Handle</label>
-                        <input type="text" id="UrlHandle" name="UrlHandle" class="form-control" [(ngModel)]="model.urlHandle">
-                    </div>
-                    <div class="mt-3">
-                        <label for="ShortDescription" class="form-label">Short Description</label>
-                        <input type="text" id="ShortDescription" name="ShortDescription" class="form-control" [(ngModel)]="model.shortDesc">
-                    </div>
-                    <div class="mt-3">
-                        <label for="content" class="form-label">Content</label>
-                      <div class="d-flex flex-row">
-                        <div class="col-6 p-2">
-                            <textarea 
-                            id="content"
-                            name="content"
-                            class="form-control"
-                            style="height: 350px;max-height: 350px;"
-                            [(ngModel)]="model.content">
-                        </textarea>
-                        </div>
-                        <div class="col-6 p-2"
-                        style="max-height: 350px; overflow-y: scroll;">
-                        <markdown [data]="model.content"></markdown>
-                    </div>
-                      </div>
-                    </div>
-                    <div class="mt-3">
-                        <label for="FeaturedImageUrl" class="form-label">Featured Image Url</label>
-        
-                        <ng-container class="mb-2" *ngIf="model.featuredImgUrl !== '' ">
-                            <div class="mb-3">
-        
-                                <img [src]="model.featuredImgUrl" height="100" class="my-2" alt="Ensure you entered right-url">
-                            </div>
-                        </ng-container>
-        
-        
-                        <input type="text" id="FeaturedImageUrl" name="FeaturedImageUrl" class="form-control" [(ngModel)]="model.featuredImgUrl">
-                    </div>
-                   
-                    <div class="mt-3">
-                        <label for="PublishDate" class="form-label"> <label class="required">*</label>Publish Date</label>
-                        <input type="date" id="PublishDate" name="PublishDate" class="form-control"
-                        value = {{model.publishDate}}
-                        [ngModel]="model.publishDate | date:'yyy-MM-dd'"
-                        (ngModelChange) ="model.publishDate = $event">
-                       
-                    </div>
-                    <div class="mt-3">
-                        <label for="author" class="form-label"> <label class="required">*</label>Author</label>
-                        <input type="text" id="author" name="author" class="form-control" [(ngModel)]="model.author">
-                    </div>
-        
-        
-        
-                    <div class="form-check mt-4">
-                        <input class="form-check-input" type="checkbox"  id="IsVisible" 
-                        [(ngModel)]="model.isVisible"
-                        name="isVisible">
-                        <label class="form-check-label" for="IsVisible">
-                         IsVisible?
-                        </label>
-                      </div>
-        
-                   <!--   <div class="mt-3">
-                        <label for="categories" class="form-label"> <label class="required">* </label> Category</label>
-                        <ng-container *ngIf="categories$ | async as categories">
-                           <select class="form-control" name="categories" id="categories" multiple [(ngModel)]="model?.categories"> 
-        
-                               <option *ngFor="let category of categories" [value]="category.id">
-                                 {{category.name}}
-                            </option>
-        
-                           </select>
-                        </ng-container>
-                    </div>
-                -->        
-        
-                      <div class="mt-5">
-                        <button type="submit" class="btn btn-primary"> Submit</button>
-                    </div>
-                </div>
-            </form>
-    </ng-container>
+        <div class="alert alert-danger" *ngIf="title.invalid && title.touched">
+          title cannot be empty
+        </div>
 
-    <ng-template #elseBlock>
-        <!-- Content to render if condition is false -->
-        <p>This content is rendered when the condition is false.</p>
-      </ng-template>
+        <div class="mt-3">
+          <label for="UrlHandle" class="form-label">
+            <label class="required">*</label>Url Handle</label
+          >
+          <input
+            type="text"
+            id="UrlHandle"
+            name="UrlHandle"
+            class="form-control"
+            [(ngModel)]="model.urlHandle"
+          />
+        </div>
+        <div class="mt-3">
+          <label for="ShortDescription" class="form-label"
+            >Short Description</label
+          >
+          <input
+            type="text"
+            id="ShortDescription"
+            name="ShortDescription"
+            class="form-control"
+            [(ngModel)]="model.shortDesc"
+          />
+        </div>
+        <div class="mt-3">
+          <label for="content" class="form-label">Content</label>
+          <div class="d-flex flex-row">
+            <div class="col-6 p-2">
+              <textarea
+                id="content"
+                name="content"
+                class="form-control"
+                style="height: 350px; max-height: 350px"
+                [(ngModel)]="model.content"
+              >
+              </textarea>
+            </div>
+            <div
+              class="col-6 p-2"
+              style="max-height: 350px; overflow-y: scroll"
+            >
+              <markdown [data]="model.content"></markdown>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <label for="FeaturedImageUrl" class="form-label"
+            >Featured Image Url</label
+          >
+
+          <ng-container class="mb-2" *ngIf="model.featuredImgUrl !== ''">
+            <div class="mb-3">
+              <img
+                [src]="model.featuredImgUrl"
+                height="100"
+                class="my-2"
+                alt="Ensure you entered right-url"
+              />
+            </div>
+          </ng-container>
+
+          <input
+            type="text"
+            id="FeaturedImageUrl"
+            name="FeaturedImageUrl"
+            class="form-control"
+            [(ngModel)]="model.featuredImgUrl"
+          />
+        </div>
+
+        <div class="mt-3">
+          <label for="PublishDate" class="form-label">
+            <label class="required">*</label>Publish Date</label
+          >
+          <input
+            type="date"
+            id="PublishDate"
+            name="PublishDate"
+            class="form-control"
+            value="{{ model.publishDate }}"
+            [ngModel]="model.publishDate | date : 'yyy-MM-dd'"
+            (ngModelChange)="model.publishDate = $event"
+          />
+        </div>
+        <div class="mt-3">
+          <label for="author" class="form-label">
+            <label class="required">*</label>Author</label
+          >
+          <input
+            type="text"
+            id="author"
+            name="author"
+            class="form-control"
+            [(ngModel)]="model.author"
+          />
+        </div>
+
+        <div class="form-check mt-4">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="IsVisible"
+            [(ngModel)]="model.isVisible"
+            name="isVisible"
+          />
+          <label class="form-check-label" for="IsVisible"> IsVisible? </label>
+        </div>
+        <!--
+              <div class="mt-3">
+                <label for="categories" class="form-label"> <label class="required">* </label> Category</label>
+                <ng-container *ngIf="categories$ | async as categories">
+                   <select class="form-control" name="categories" id="categories" multiple [(ngModel)]="model.categories"> 
+
+                       <option *ngFor="let category of categories" [value]="category.id">
+                         {{category.name}}
+                    </option>
+
+                   </select>
+                </ng-container>
+            </div>
+-->
+
+        <div class="mt-5">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </ng-container>
 </div>
-
