@@ -98,6 +98,7 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
    if(this.id){
     this.DeleteCategorySubscription = this.BlogPostService.deleteBlogPost(this.id).subscribe({
       next: (response) =>{
+        alert("Successfully Deleted");
         this.router.navigateByUrl('/admin/blogpostlist');
       }
     })

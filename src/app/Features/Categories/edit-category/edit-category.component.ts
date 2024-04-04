@@ -73,7 +73,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
           next: (response) =>{
             
             this.router.navigateByUrl('/admin/categories')
-
+            alert("Successfully Deleted");
              
           }
         })
