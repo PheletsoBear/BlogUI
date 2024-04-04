@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { CategoryService } from '../../Categories/Services/category.service';
 import { Category } from '../../Categories/models/category.model';
 import { UpdateBlogPost } from '../models/update-blog-post-model.model';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-edit-blog-post',
   standalone: true,
@@ -33,7 +34,8 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private BlogPostService: BlogPostService, 
               private categoryService: CategoryService,
-              private router:Router
+              private router:Router,
+              private toastr: ToastrService
               ) 
               { }
 
@@ -86,9 +88,13 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
       
       this.updateBlogPostSubscription = this.BlogPostService.updateBlogPost(this.id, UpdateBlogPost).subscribe({
         next: (Response) => {
-          
+          this.toastr.info('Blog post successfully Updated', 'Info');
           this.router.navigateByUrl('/admin/blogpostlist');
           console.log(this.selectedCategories)
+        },
+        error: (error) => {
+          const errorMessage = error.message || 'An error occurred while updating the blog post.';
+          this.toastr.error(errorMessage, 'Error');
         }
       })
     }
@@ -98,8 +104,12 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
    if(this.id){
     this.DeleteCategorySubscription = this.BlogPostService.deleteBlogPost(this.id).subscribe({
       next: (response) =>{
-        alert("Successfully Deleted");
+        this.toastr.warning('Blog post successfully Deleted', 'Warning');
         this.router.navigateByUrl('/admin/blogpostlist');
+      },
+      error: (error) => {
+        const errorMessage = error.message || 'An error occurred while deleting the blog post.';
+        this.toastr.error(errorMessage, 'Error');
       }
     })
    }

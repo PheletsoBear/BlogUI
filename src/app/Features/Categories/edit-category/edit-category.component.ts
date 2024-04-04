@@ -55,10 +55,14 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
 
      this.editCategorySubcriprion =  this.CategoryService.updateCategory(this.id, updateCategoryRequest).subscribe({
       next : (response) =>{
-       
+        this.toastr.info('Category successfully updated', 'Success');
         this.router.navigateByUrl('/admin/categories');
-        console.log(form);
+        
 
+      },
+      error: (error) => {
+        const errorMessage = error.message || 'An error occurred while updating the category.';
+        this.toastr.error(errorMessage, 'Error');
       }
     
     })
@@ -71,10 +75,14 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
       if(this.id){
         this.DeleteCategorySubscription = this.CategoryService.deleteCategory(this.id).subscribe({
           next: (response) =>{
-            
+            this.toastr.warning('Category successfully Deleted', 'Success');
             this.router.navigateByUrl('/admin/categories')
-            alert("Successfully Deleted");
+            
              
+          },
+          error: (error) => {
+            const errorMessage = error.message || 'An error occurred while updating the category.';
+            this.toastr.error(errorMessage, 'Error');
           }
         })
       }

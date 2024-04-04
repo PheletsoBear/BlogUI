@@ -32,7 +32,15 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right', // Adjust position
+      preventDuplicates: true, // Prevent duplicate notifications
+      closeButton: true, // Show close button
+      progressBar: true, // Show progress bar
+      timeOut: 3000, // Time duration in milliseconds
+      extendedTimeOut: 1000, // Additional time for extended messages
+      // Other configuration options...
+    }), // ToastrModule added
     BrowserAnimationsModule,
     CommonModule
   ],

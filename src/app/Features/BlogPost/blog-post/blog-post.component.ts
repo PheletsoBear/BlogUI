@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CategoryService } from '../../Categories/Services/category.service';
 import { Observable } from 'rxjs';
 import { Category } from '../../Categories/models/category.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-blog-post',
@@ -17,7 +18,10 @@ model : AddBlogPost;
 categories$?: Observable<Category[]>;
 
 
-constructor(private BlogPostService: BlogPostService, private router: Router, private categoryService: CategoryService ) {
+constructor(private BlogPostService: BlogPostService, 
+            private router: Router,
+             private categoryService: CategoryService,
+             private toastr: ToastrService ) {
   this.model = {
     Title : '',
     ShortDesc: '',
@@ -40,8 +44,14 @@ onFormSubmit(): void{
  this.BlogPostService.addBlogPost(this.model).subscribe({
 
   next: (response) =>{
+   
+    this.toastr.success('Blog post successfully added', 'Success');
     this.router.navigateByUrl('/admin/blogpostlist')
-   console.log(this.model)
+        
+  },
+  error: (error) => {
+    const errorMessage = error.message || 'An error occurred while adding the blog post.';
+    this.toastr.error(errorMessage, 'Error');
   }
  })
 }
