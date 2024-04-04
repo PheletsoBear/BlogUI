@@ -16,6 +16,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
   id: string | null = null; //Adding the id property to hold the route id
   category?: Category;
   editCategorySubcriprion?: Subscription;
+  DeleteCategorySubscription?: Subscription;
 
    constructor (private route: ActivatedRoute, private CategoryService :  CategoryService, private router: Router,private toastr: ToastrService ){
 
@@ -68,7 +69,7 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
     onDelete(): void{
             
       if(this.id){
-        this.CategoryService.deleteCategory(this.id).subscribe({
+        this.DeleteCategorySubscription = this.CategoryService.deleteCategory(this.id).subscribe({
           next: (response) =>{
             
             this.router.navigateByUrl('/admin/categories')
@@ -83,7 +84,8 @@ export class EditCategoryComponent implements OnInit, OnDestroy{
       ngOnDestroy(): void {
          this.paramsSubscription?.unsubscribe(); //this unsubscribes from the observable
          this.editCategorySubcriprion?.unsubscribe(); //this unsubscribes from the observable
-      }
+          this.DeleteCategorySubscription?.unsubscribe();
+        }
   
 
         
