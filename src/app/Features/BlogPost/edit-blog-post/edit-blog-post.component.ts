@@ -10,12 +10,13 @@ import { CategoryService } from '../../Categories/Services/category.service';
 import { Category } from '../../Categories/models/category.model';
 import { UpdateBlogPost } from '../models/update-blog-post-model.model';
 import { ToastrService } from 'ngx-toastr';
+import { ImageSelectorComponent } from "../../../shared/components/image-selector/image-selector.component";
 @Component({
-  selector: 'app-edit-blog-post',
-  standalone: true,
-  templateUrl: './edit-blog-post.component.html',
-  styleUrl: './edit-blog-post.component.css',
-  imports: [FormsModule, CommonModule, MarkdownModule]
+    selector: 'app-edit-blog-post',
+    standalone: true,
+    templateUrl: './edit-blog-post.component.html',
+    styleUrl: './edit-blog-post.component.css',
+    imports: [FormsModule, CommonModule, MarkdownModule, ImageSelectorComponent]
 })
 export class EditBlogPostComponent implements OnInit, OnDestroy {
 
@@ -24,7 +25,7 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
   categories$?: Observable<Category[]>;
   DeleteCategorySubscription?: Subscription;
   selectedCategories?: any[];
-
+  isImageSelectorVisible : boolean = false;
 
   paramSubscription?: Subscription;
   updateBlogPostSubscription?: Subscription;
@@ -114,7 +115,13 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
     })
    }
 }
-
+openImageSelector(): void{
+   this.isImageSelectorVisible = true; // This opens up the modal
+   
+}
+closeImageSelector():void{
+  this.isImageSelectorVisible = false; //this closes the modal
+}
   ngOnDestroy(): void {
     this.paramSubscription?.unsubscribe();
     this.updateBlogPostSubscription?.unsubscribe();
