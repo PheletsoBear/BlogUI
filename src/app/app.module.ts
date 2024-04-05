@@ -14,37 +14,37 @@ import { MarkdownModule } from 'ngx-markdown';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { ImageSelectorComponent } from "./shared/components/image-selector/image-selector.component";
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    CategoryListComponent,
-    AddCategoryComponent,
-    EditCategoryComponent,
-    BlogpostListComponent,
-    BlogPostComponent
-    
-   
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    MarkdownModule.forRoot(),
-    ToastrModule.forRoot({
-      positionClass: 'toast-top-right', // Adjust position
-      preventDuplicates: true, // Prevent duplicate notifications
-      closeButton: true, // Show close button
-      progressBar: true, // Show progress bar
-      timeOut: 3000, // Time duration in milliseconds
-      extendedTimeOut: 1000, // Additional time for extended messages
-      // Other configuration options...
-    }), // ToastrModule added
-    BrowserAnimationsModule,
-    CommonModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        CategoryListComponent,
+        AddCategoryComponent,
+        EditCategoryComponent,
+        BlogpostListComponent,
+        BlogPostComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        MarkdownModule.forRoot(),
+        ToastrModule.forRoot({
+            positionClass: 'toast-top-right', // Adjust position
+            preventDuplicates: true, // Prevent duplicate notifications
+            closeButton: true, // Show close button
+            progressBar: true, // Show progress bar
+            timeOut: 3000, // Time duration in milliseconds
+            extendedTimeOut: 1000, // Additional time for extended messages
+            // Other configuration options...
+        }), // ToastrModule added
+        BrowserAnimationsModule,
+        CommonModule,
+        ImageSelectorComponent
+    ]
 })
 export class AppModule { }
