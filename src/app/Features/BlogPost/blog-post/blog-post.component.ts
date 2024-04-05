@@ -6,7 +6,7 @@ import { CategoryService } from '../../Categories/Services/category.service';
 import { Observable } from 'rxjs';
 import { Category } from '../../Categories/models/category.model';
 import { ToastrService } from 'ngx-toastr';
-
+import { ImageSelectorComponent } from 'src/app/shared/components/image-selector/image-selector.component';
 @Component({
   selector: 'app-blog-post',
   templateUrl: './blog-post.component.html',
@@ -16,7 +16,7 @@ export class BlogPostComponent implements OnInit{
 
 model : AddBlogPost;
 categories$?: Observable<Category[]>;
-
+isImageSelectorVisible : boolean = false;
 
 constructor(private BlogPostService: BlogPostService, 
             private router: Router,
@@ -55,5 +55,11 @@ onFormSubmit(): void{
   }
  })
 }
-
+openImageSelector(): void{
+  this.isImageSelectorVisible = true; // This opens up the modal
+  
+}
+closeImageSelector():void{
+ this.isImageSelectorVisible = false; //this closes the modal
+}
 }
