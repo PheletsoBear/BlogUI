@@ -12,4 +12,7 @@
 */
 /* styles.css or your component-specific styles file */
 
-
+.navbar{
+    position: sticky;
+    top:0;
+}
