@@ -11,12 +11,13 @@ import { Category } from '../../Categories/models/category.model';
 import { UpdateBlogPost } from '../models/update-blog-post-model.model';
 import { ToastrService } from 'ngx-toastr';
 import { ImageSelectorComponent } from "../../../shared/components/image-selector/image-selector.component";
+import { ImageService } from 'src/app/shared/components/image-selector/image.service';
 @Component({
-    selector: 'app-edit-blog-post',
-    standalone: true,
-    templateUrl: './edit-blog-post.component.html',
-    styleUrl: './edit-blog-post.component.css',
-    imports: [FormsModule, CommonModule, MarkdownModule, ImageSelectorComponent]
+  selector: 'app-edit-blog-post',
+  standalone: true,
+  templateUrl: './edit-blog-post.component.html',
+  styleUrl: './edit-blog-post.component.css',
+  imports: [FormsModule, CommonModule, MarkdownModule, ImageSelectorComponent]
 })
 export class EditBlogPostComponent implements OnInit, OnDestroy {
 
@@ -25,23 +26,23 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
   categories$?: Observable<Category[]>;
   DeleteCategorySubscription?: Subscription;
   selectedCategories?: any[];
-  isImageSelectorVisible : boolean = false;
+  isImageSelectorVisible: boolean = false;
 
   paramSubscription?: Subscription;
   updateBlogPostSubscription?: Subscription;
   getBlogPostSubscription?: Subscription;
-
+  imageSelectSubscription?: Subscription;
 
   constructor(private route: ActivatedRoute,
-              private BlogPostService: BlogPostService, 
-              private categoryService: CategoryService,
-              private router:Router,
-              private toastr: ToastrService
-              ) 
-              { }
+    private BlogPostService: BlogPostService,
+    private categoryService: CategoryService,
+    private router: Router,
+    private toastr: ToastrService,
+    private imageService: ImageService
+  ) { }
 
   ngOnInit(): void {
- this.categories$ = this.categoryService.getAllCategories();
+    this.categories$ = this.categoryService.getAllCategories();
     this.paramSubscription = this.route.paramMap.subscribe({
 
       next: (params) => {
@@ -67,10 +68,18 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
 
     });
 
-
+    this.imageSelectSubscription =  this.imageService.onSelectImage().subscribe
+    ({
+         next: (response) =>{
+        if(this.model){
+          this.model.featuredImgUrl = response.url;
+          this.isImageSelectorVisible = false;
+        }
+      }
+      });
   }
-  
-  
+
+
   onFormSubmit() {
     // Convert this model to request object
     if (this.model && this.id) //checks if the model and id are not null
@@ -84,11 +93,11 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
         PublishDate: this.model.publishDate,
         Title: this.model.title,
         UrlHandle: this.model.urlHandle,
-        categories: this.selectedCategories?? [] //if this is null/underfined we return the empty array
+        categories: this.selectedCategories ?? [] //if this is null/underfined we return the empty array
       };
-      
+
       this.updateBlogPostSubscription = this.BlogPostService.updateBlogPost(this.id, UpdateBlogPost).subscribe({
-        next: (Response) => {
+        next: (response) => {
           this.toastr.info('Blog post successfully Updated', 'Info');
           this.router.navigateByUrl('/admin/blogpostlist');
           console.log(this.selectedCategories)
@@ -100,33 +109,33 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
       })
     }
   }
-  
-  onDelete(): void{
-   if(this.id){
-    this.DeleteCategorySubscription = this.BlogPostService.deleteBlogPost(this.id).subscribe({
-      next: (response) =>{
-        this.toastr.warning('Blog post successfully Deleted', 'Warning');
-        this.router.navigateByUrl('/admin/blogpostlist');
-      },
-      error: (error) => {
-        const errorMessage = error.message || 'An error occurred while deleting the blog post.';
-        this.toastr.error(errorMessage, 'Error');
-      }
-    })
-   }
-}
-openImageSelector(): void{
-   this.isImageSelectorVisible = true; // This opens up the modal
-   
-}
-closeImageSelector():void{
-  this.isImageSelectorVisible = false; //this closes the modal
-}
+
+  onDelete(): void {
+    if (this.id) {
+      this.DeleteCategorySubscription = this.BlogPostService.deleteBlogPost(this.id).subscribe({
+        next: (response) => {
+          this.toastr.warning('Blog post successfully Deleted', 'Warning');
+          this.router.navigateByUrl('/admin/blogpostlist');
+        },
+        error: (error) => {
+          const errorMessage = error.message || 'An error occurred while deleting the blog post.';
+          this.toastr.error(errorMessage, 'Error');
+        }
+      })
+    }
+  }
+  openImageSelector(): void {
+    this.isImageSelectorVisible = true; // This opens up the modal
+
+  }
+  closeImageSelector(): void {
+    this.isImageSelectorVisible = false; //this closes the modal
+  }
   ngOnDestroy(): void {
     this.paramSubscription?.unsubscribe();
     this.updateBlogPostSubscription?.unsubscribe();
     this.getBlogPostSubscription?.unsubscribe();
-
+    this.imageSelectSubscription?.unsubscribe();
   }
-  
+
 }
