@@ -18,3 +18,8 @@
     --bs-btn-bg: #ced4da;
     --bs-btn-hover-bg: #9ea3a9;
 }
+
+.blog-content{
+    max-height: 100%;
+    margin: 2em 0 2em 0;
+}
