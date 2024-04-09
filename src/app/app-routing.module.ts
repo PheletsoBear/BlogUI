@@ -6,13 +6,24 @@ import { EditCategoryComponent } from './Features/Categories/edit-category/edit-
 import {  BlogpostListComponent } from './Features/BlogPost/blogpostlist/blogpostlist.component';
 import { BlogPostComponent } from './Features/BlogPost/blog-post/blog-post.component';
 import { EditBlogPostComponent } from './Features/BlogPost/edit-blog-post/edit-blog-post.component';
+import { HomeComponent } from './Features/public/home/home.component';
+import { BlogDetailsComponent } from './Features/public/blog-details/blog-details.component';
 
 const routes: Routes = [
+  {
+      path: '',
+      component: HomeComponent
+  },
+  {
+    path:'blog/:url',
+    component: BlogDetailsComponent
+  },
   {
     path: 'admin/categories',
     component:  CategoryListComponent
 
   },
+  
   {
     path: 'admin/categories/add',
     component: AddCategoryComponent
